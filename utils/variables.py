@@ -8,8 +8,10 @@ load_dotenv()
 # Env keys
 
 FACTS_URL = 'FACTS_URL'
+AGGREGATE_URL = 'AGGREGATE_URL'
 BACKEND = 'BACKEND'
 DIM = 'DIM'
+DRILL = 'DRILL'
 DIR = 'DIR'
 API_KEY = 'API_KEY'
 DIM_FILTERS = 'DIM_FILTERS'
@@ -31,6 +33,7 @@ INPUT_ERROR = 'Ошибка ввода, попробуйте еще раз.'
 STAFFCOP = 'staffcop'
 HEADHUNTER = 'hh'
 FILTERS = 'filters'
+AMOUNT = 'amount'
 
 # HeadHunter settings
 
@@ -96,18 +99,25 @@ FIELDS = {
 			'Время',
 			'Ссылка',
 			'Заголовок'
+		],
+	'amount':
+		[
+			'Пользователь',
+			'Количество событий'
 		]
 }
 
 FILENAMES = {
 	'staffcop': 'Отчет по НН за',
-	'hh': 'Вакансии СБ'
+	'hh': 'Вакансии СБ',
+	'amount': 'Количество событий'
 }
 
 PATHS = {
 	'staffcop': 'files/weekly_staffcop_hh/',
 	'hh': 'files/weekly_hh_security/',
-	'filters': 'files/weekly_staffcop_filters/'
+	'filters': 'files/weekly_staffcop_filters/',
+	'amount': 'files/weekly_amount_events/'
 }
 
 # Salary text
