@@ -153,3 +153,17 @@ class Events:
 				yield [name, computer, local_time, url, title]
 			except KeyError as err:
 				raise CE(err).key_error()
+
+	@staticmethod
+	def get_amount_of_events(chosen_dates: str, chosen_event: str) -> dict:
+		url = prepare_url_to_request(
+			chosen_dates=chosen_dates, chosen_event=chosen_event
+		)
+		return CR.get_staffcop_response(url=url)
+
+	@staticmethod
+	def prepare_data_to_save(data: dict):
+		for cell in data.get('cells', ''):
+			name = cell.get('agent_account.user_name', '')
+			count = cell.get('record_count', '')
+			yield [name, count]

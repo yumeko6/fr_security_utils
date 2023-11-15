@@ -3,7 +3,7 @@ import datetime
 
 from utils.event_dates import EventDates
 from utils.variables import FIELDS, FILENAMES, STAFFCOP, HEADHUNTER, FILTERS, \
-	EXT
+	EXT, AMOUNT
 
 
 class SaveToFile:
@@ -41,6 +41,8 @@ class SaveToFile:
 			filename = f'{path}{FILENAMES[chosen_event]} {today}{EXT}'
 		elif chosen_event == FILTERS:
 			filename = f'{path}{custom_filter} {start}-{end}{EXT}'
+		elif chosen_event == AMOUNT:
+			filename = f'{path}{FILENAMES[chosen_event]} {start}-{end}{EXT}'
 
 		return fields, filename
 
