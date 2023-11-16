@@ -18,7 +18,7 @@ from utils.variables import (
 	TIME_FROM,
 	TIME_FROM_END,
 	TIME_TO,
-	TIME_TO_END, AMOUNT, AGGREGATE_URL, DRILL
+	TIME_TO_END, AMOUNT, AGGREGATE_URL, DRILL, YESTERDAY
 )
 
 
@@ -50,6 +50,9 @@ def prepare_url_to_request(
 		start, end = EventDates.get_last_week()
 	elif chosen_dates == CUSTOM:
 		start, end = EventDates.get_custom_dates()
+	elif chosen_dates == YESTERDAY:
+		start = EventDates.get_yesterday()
+		end = start
 
 	time_from = f'{TIME_FROM}{start}{TIME_FROM_END}'
 	time_to = f'{TIME_TO}{end}{TIME_TO_END}'

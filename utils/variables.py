@@ -20,6 +20,7 @@ FILTER_HH = 'FILTER_HH'
 # Date choices
 
 LASTWEEK = 'lastweek'
+YESTERDAY = 'yesterday'
 CUSTOM = 'custom'
 
 # User inputs

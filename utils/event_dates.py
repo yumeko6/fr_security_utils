@@ -1,4 +1,4 @@
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 
 from dateutil.relativedelta import relativedelta
 from dateutil.rrule import MO, SU
@@ -26,6 +26,12 @@ class EventDates:
 		:return: Текущий день, тип данных datetime.
 		"""
 		return datetime.today()
+
+	@staticmethod
+	def get_yesterday() -> str:
+		today = EventDates.get_today()
+		yesterday = today - timedelta(days=1)
+		return yesterday.strftime('%Y-%m-%d')
 
 	@staticmethod
 	def get_custom_dates() -> tuple[str, str]:

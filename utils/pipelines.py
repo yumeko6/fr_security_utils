@@ -5,7 +5,7 @@ from utils.event_dates import EventDates
 from utils.events import Events
 from utils.save_to_file import SaveToFile
 from utils.variables import STAFFCOP, LASTWEEK, HEADHUNTER, STAFFCOP_FILTERS, \
-	FILTERS, PATHS, AMOUNT
+	FILTERS, PATHS, AMOUNT, YESTERDAY
 
 
 class Pipeline:
@@ -94,6 +94,22 @@ class Pipeline:
 		all_events = Events.get_amount_of_events(chosen_dates, chosen_event)
 		data_to_save = Events.prepare_data_to_save(all_events)
 		start, end = EventDates.get_last_week()
+		SaveToFile.save_event_to_csv(
+			chosen_event=chosen_event,
+			start=start,
+			end=end,
+			data=[cell for cell in data_to_save],
+			path=PATHS[chosen_event]
+		)
+
+	@staticmethod
+	def pipeline_daily_amount_of_events():
+		chosen_event = AMOUNT
+		chosen_dates = YESTERDAY
+		all_events = Events.get_amount_of_events(chosen_dates, chosen_event)
+		data_to_save = Events.prepare_data_to_save(all_events)
+		start = EventDates.get_yesterday()
+		end = start
 		SaveToFile.save_event_to_csv(
 			chosen_event=chosen_event,
 			start=start,

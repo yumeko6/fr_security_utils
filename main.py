@@ -38,6 +38,12 @@ if __name__ == '__main__':
 					Dialog.failure(error)
 			case '5':
 				try:
+					Pipeline.pipeline_daily_amount_of_events()
+					Dialog.success()
+				except Exception as error:
+					Dialog.failure(error)
+			case '6':
+				try:
 					Pipeline.pipeline_weekly_hh()
 					Pipeline.pipeline_weekly_security()
 					Pipeline.pipeline_weekly_filters()
@@ -45,7 +51,7 @@ if __name__ == '__main__':
 					Dialog.success()
 				except Exception as error:
 					Dialog.failure(error)
-			case '8':
+			case '9':
 				break
 			case _:
 				print('В разработке...')
