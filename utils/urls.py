@@ -9,16 +9,14 @@ from utils.variables import (
 	VACANCY_URL,
 	FILTERS,
 	FACTS_URL,
-	BACKEND,
-	DIM,
-	DIR,
 	API_KEY,
-	DIM_FILTERS,
-	FILTER_HH,
 	TIME_FROM,
 	TIME_FROM_END,
 	TIME_TO,
-	TIME_TO_END, AMOUNT, AGGREGATE_URL, DRILL, YESTERDAY
+	TIME_TO_END,
+	AMOUNT,
+	AGGREGATE_URL,
+	YESTERDAY
 )
 
 
@@ -37,13 +35,7 @@ def prepare_url_to_request(
 
 	facts = getenv(FACTS_URL)
 	aggregate = getenv(AGGREGATE_URL)
-	back = getenv(BACKEND)
-	dim = getenv(DIM)
-	drill = getenv(DRILL)
-	dir_ = getenv(DIR)
 	key = getenv(API_KEY)
-	dim_f = getenv(DIM_FILTERS)
-	hh = getenv(FILTER_HH)
 	start, end = None, None
 
 	if chosen_dates == LASTWEEK:
@@ -58,10 +50,10 @@ def prepare_url_to_request(
 	time_to = f'{TIME_TO}{end}{TIME_TO_END}'
 
 	url_formats = {
-		STAFFCOP: f'{facts}{back}{dim}{dir_}{hh}{time_from}{time_to}{key}',
+		STAFFCOP: f'{facts}{time_from}{time_to}{key}',
 		HEADHUNTER: VACANCY_URL,
-		FILTERS: f'{facts}{back}{dim_f}{dir_}{filters}{time_from}{time_to}{key}',
-		AMOUNT: f'{aggregate}{back}{drill}{time_from}{time_to}{key}'
+		FILTERS: f'{time_from}{time_to}{key}',
+		AMOUNT: f'{aggregate}{time_from}{time_to}{key}'
 	}
 
 	url = url_formats.get(chosen_event)
